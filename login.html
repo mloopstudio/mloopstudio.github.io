@@ -5,6 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Mloop Studio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-form {
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--fg-dark);
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--bg-neutral);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--dominant);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: var(--dominant);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: var(--accent);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--dominant);
+            color: var(--bg-white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-family: var(--font-primary);
+        }
+
+        .login-button:hover {
+            background-color: var(--accent);
+            color: var(--fg-dark);
+            transform: translateY(-2px);
+        }
+
+        .progress-notice {
+            background-color: var(--supporting);
+            color: var(--bg-white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .employee-notice {
+            background-color: var(--bg-neutral);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .employee-notice h3 {
+            color: var(--fg-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .employee-notice p {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .employee-notice a {
+            color: var(--dominant);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .employee-notice a:hover {
+            color: var(--accent);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -34,33 +142,52 @@
             <div class="login-box">
                 <img src="logo.png" alt="Mloop Studio" style="height: 80px; margin-bottom: 1.5rem;">
                 <h1>Employee Portal</h1>
-                <p style="color: var(--dominant); margin-bottom: 2rem;">Secure access for team members only</p>
+                <p style="color: var(--dominant); margin-bottom: 1rem;">Welcome back to Mloop Studio</p>
 
-                <div class="login-notice">
-                    <h2>⚠️ Employees Only</h2>
-                    <p>This portal is restricted to Mloop Studio employees. Unauthorized access attempts will be logged.</p>
+                <div class="progress-notice">
+                    <strong>⚙️ System Notice:</strong> Still in progress. We use Supabase for our backend.
                 </div>
 
-                <div class="contact-box">
-                    <h3 style="color: var(--fg-dark); margin-bottom: 1rem;">Need Access?</h3>
-                    <p style="margin-bottom: 1rem;">If you are a Mloop Studio employee and need login credentials or technical assistance, please contact our tech team:</p>
-                    <div style="margin-top: 1rem;">
-                        <p><strong>Email:</strong> <a href="mailto:mloopstudio@gmail.com?subject=Login%20Access%20Request" style="color: var(--dominant); text-decoration: none;">mloopstudio@gmail.com</a></p>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--fg-dark); opacity: 0.8;">Please include your name and role in the subject line</p>
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Username/Email</label>
+                        <input type="text" id="email" name="email" placeholder="Enter your username or email" required>
                     </div>
-                </div>
 
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--bg-neutral);">
-                    <p style="font-size: 0.9rem; color: var(--fg-dark); opacity: 0.7;">
-                        Not an employee? <a href="join.html" style="color: var(--dominant); text-decoration: none; font-weight: 600;">Join our team</a>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="mailto:mloopstudio@gmail.com?subject=Password%20Reset%20Request">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-button">Login</button>
+                </form>
+
+                <div class="employee-notice">
+                    <h3>Employees Only</h3>
+                    <p>This portal is restricted to Mloop Studio employees.</p>
+                    <p>If you need access or technical assistance, please contact our tech team at <a href="mailto:mloopstudio@gmail.com">mloopstudio@gmail.com</a></p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        Not an employee? <a href="join.html">Join our team →</a>
                     </p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-container">
+    <script src="script.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality is still in progress. Please contact mloopstudio@gmail.com for access.');
+        });
+    </script>
+</body>
+</html>        <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section">
                     <img src="logo.png" alt="Mloop Studio" class="footer-logo">
