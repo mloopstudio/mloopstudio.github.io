@@ -1,10 +1,182 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MLoop Studio</title>
+  <meta name="description" content="MLoop Studio – creative development studio." />
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --card: #16161b;
+      --text: #eaeaf0;
+      --muted: #9a9aa3;
+      --accent: #6cf2c2;
+    }* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #0f0f12, #0b0b0e);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  max-width: 1100px;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.buttons a {
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.primary {
+  background: var(--accent);
+  color: #0b0b0e;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid #2a2a32;
+  color: var(--text);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #22222a;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+footer {
+  padding: 32px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 48px 24px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  nav {
+    display: none;
+  }
+}
+
+  </style>
 </head>
 <body>
-  <h1>Welcome to MLoop Studio</h1>
-  <p>This site is hosted on GitHub Pages.</p>
-</body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="MLoop Studio Logo" />
+      MLoop Studio
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>  <main>
+    <section class="hero">
+      <h1>Building creative digital experiences</h1>
+      <p>
+        MLoop Studio is a creative development studio focused on clean design,
+        modern web technology, and experimental projects.
+      </p>
+      <div class="buttons">
+        <a href="#" class="primary">View Projects</a>
+        <a href="mailto:contact@mloopstudio.com" class="secondary">Contact</a>
+      </div>
+    </section><section class="card">
+  <h3>About MLoop Studio</h3>
+  <p>
+    We design and build lightweight, performant websites and tools.
+    This site is hosted on GitHub Pages and designed to scale as the studio grows.
+  </p>
+</section>
+
+  </main>  <footer>
+    © <span id="year"></span> MLoop Studio. All rights reserved.
+  </footer>  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script></body>
 </html>
