@@ -132,16 +132,29 @@ function createChatBubbles() {
     });
     
     chatBubblesCreated = true;
+    
+    // Observe each bubble individually
+    observeChatBubbles();
 }
 
-function animateChatBubbles() {
-    const bubbles = document.querySelectorAll('.chat-bubble');
+// Individual bubble observer
+function observeChatBubbles() {
+    const bubbleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                bubbleObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+    });
     
-    bubbles.forEach((bubble, index) => {
-        setTimeout(() => {
-            bubble.style.opacity = '1';
-            bubble.style.transform = 'translateY(0)';
-        }, index * 1200);
+    const bubbles = document.querySelectorAll('.chat-bubble');
+    bubbles.forEach(bubble => {
+        bubbleObserver.observe(bubble);
     });
 }
 
@@ -150,14 +163,11 @@ const chatObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             createChatBubbles();
-            setTimeout(() => {
-                animateChatBubbles();
-            }, 100);
             chatObserver.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.2,
+    threshold: 0.1,
     rootMargin: '0px'
 });
 
