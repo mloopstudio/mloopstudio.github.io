@@ -57,7 +57,6 @@ const observer = new IntersectionObserver((entries) => {
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.highlight-card, .project-card, .perk-card, .value-card');
-    
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
@@ -74,3 +73,98 @@ if (loginForm) {
         alert('This is an employee-only portal. Please contact our tech team if you are an employee.');
     });
 }
+
+// Chat Mission Section
+const messages = [
+    { 
+        text: "Throughout history, stories have shaped how children understand themselves and the world.", 
+        side: "left", 
+        image: "images/image1.png" 
+    },
+    { 
+        text: "This belief is why we created Mloop Studio.", 
+        side: "right", 
+        image: "images/white-logo-text.png" 
+    },
+    { 
+        text: "Through animation, we strive to help future generations grow into emotionally aware, self-reflective, and passion-driven individuals.", 
+        side: "left", 
+        image: "images/img3.png" 
+    },
+    { 
+        text: "We are a small, independent studio working remotely, united by a shared purpose rather than a shared location.", 
+        side: "right", 
+        image: "images/image4.png" 
+    }
+];
+
+let chatBubblesCreated = false;
+
+function createChatBubbles() {
+    const container = document.getElementById('chatContainer');
+    if (!container || chatBubblesCreated) return;
+    
+    container.innerHTML = '';
+    
+    messages.forEach((msg, index) => {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${msg.side}`;
+        bubble.style.opacity = '0';
+        bubble.style.transform = 'translateY(20px)';
+        bubble.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        bubble.dataset.index = index;
+        
+        const content = document.createElement('div');
+        content.className = 'bubble-content';
+        content.textContent = msg.text;
+        
+        const imageWrapper = document.createElement('div');
+        imageWrapper.className = 'bubble-image';
+        
+        const img = document.createElement('img');
+        img.src = msg.image;
+        img.alt = `Image ${index + 1}`;
+        
+        imageWrapper.appendChild(img);
+        bubble.appendChild(content);
+        bubble.appendChild(imageWrapper);
+        container.appendChild(bubble);
+    });
+    
+    chatBubblesCreated = true;
+}
+
+function animateChatBubbles() {
+    const bubbles = document.querySelectorAll('.chat-bubble');
+    
+    bubbles.forEach((bubble, index) => {
+        setTimeout(() => {
+            bubble.style.opacity = '1';
+            bubble.style.transform = 'translateY(0)';
+        }, index * 1200);
+    });
+}
+
+// Intersection Observer for chat section
+const chatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            createChatBubbles();
+            setTimeout(() => {
+                animateChatBubbles();
+            }, 100);
+            chatObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px'
+});
+
+// Initialize chat observer on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const chatContainer = document.getElementById('chatContainer');
+    if (chatContainer) {
+        chatObserver.observe(chatContainer);
+    }
+});
