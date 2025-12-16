@@ -79,7 +79,7 @@ const messages = [
     { 
         text: "Throughout history, stories have shaped how children understand themselves and the world.", 
         side: "left", 
-        image: "images/image1.png" 
+        image: "images/teowhite.png" 
     },
     { 
         text: "This belief is why we created Mloop Studio.", 
