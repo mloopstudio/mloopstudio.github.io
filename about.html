@@ -5,13 +5,399 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Mloop Studio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Interactive Hero with Image */
+        .about-hero {
+            background-color: var(--dominant);
+            padding: 6rem 20px 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content-about {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text-about h1 {
+            font-family: var(--font-accent);
+            font-size: 3.5rem;
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text-about p {
+            font-size: 1.3rem;
+            color: var(--bg-white);
+            opacity: 0.95;
+        }
+
+        .hero-image-about {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image-about img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image-about img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Story Timeline with Images */
+        .story-timeline {
+            padding: 4rem 20px;
+            background-color: var(--bg-white);
+        }
+
+        .timeline-item {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .timeline-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-neutral);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-content h2 {
+            font-family: var(--font-accent);
+            font-size: 2rem;
+            color: var(--fg-dark);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .timeline-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Interactive Team Section */
+        .team-showcase {
+            background-color: var(--bg-neutral);
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .team-showcase h2 {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            color: var(--fg-dark);
+            margin-bottom: 3rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(244, 182, 115, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .team-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-icon {
+            transform: rotate(360deg);
+        }
+
+        .team-card h3 {
+            color: var(--dominant);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Values Cards with Hover Effects */
+        .values-section {
+            padding: 4rem 20px;
+            background-color: var(--bg-white);
+        }
+
+        .values-section h2 {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--fg-dark);
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card-interactive {
+            background-color: var(--bg-neutral);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .value-card-interactive::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(139, 158, 147, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .value-card-interactive:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+
+        .value-card-interactive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-card-interactive:hover .value-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .value-card-interactive h3 {
+            color: var(--fg-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-card-interactive p {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Image Gallery Section */
+        .gallery-section {
+            padding: 4rem 20px;
+            background-color: var(--bg-neutral);
+        }
+
+        .gallery-section h2 {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--fg-dark);
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(76, 39, 10, 0.9);
+            color: var(--bg-white);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content-about {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text-about h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image-about img {
+                max-width: 300px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .timeline-content:hover {
+                transform: translateY(-10px);
+            }
+
+            .timeline-item:nth-child(even) .timeline-content:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.html" class="logo">
-                    <img src="logo-text.png" alt="Mloop Studio">
+                    <img src="images/logo.png" alt="Mloop Studio">
                 </a>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -31,59 +417,89 @@
 
     <main>
         <section class="about-hero">
-            <div class="container">
-                <h1>About Mloop Studio</h1>
-                <p>A remote team united by purpose and passion</p>
+            <div class="hero-content-about">
+                <div class="hero-text-about">
+                    <h1>About Mloop Studio</h1>
+                    <p>Creating meaningful stories that shape how children understand themselves and the world</p>
+                </div>
+                <div class="hero-image-about">
+                    <img src="images/white-logo-text.png" alt="Mloop Studio">
+                </div>
             </div>
         </section>
 
-        <section class="about-content">
-            <div class="about-section">
-                <h2>Who We Are</h2>
-                <p>Mloop Studio is a collective of creative professionals who believe in the transformative power of storytelling. We are animators, writers, designers, and dreamers who share a common vision: to create content that nurtures the emotional and intellectual growth of children.</p>
-                <p>Working remotely from different corners of the world, we've built a studio culture that values flexibility, creativity, and meaningful collaboration. Our team members bring diverse perspectives and experiences, enriching the stories we tell and the characters we create.</p>
-            </div>
-
-            <div class="about-section">
-                <h2>Our Approach</h2>
-                <p>We believe that children's entertainment should do more than just entertain. Every project we undertake is crafted with intention, designed to help young viewers develop emotional intelligence, self-awareness, and a passion for learning.</p>
-                <p>Our animation style is warm and inviting, with attention to detail that respects our young audience's intelligence. We tackle complex themes in age-appropriate ways, creating stories that children can grow with and return to as they mature.</p>
-            </div>
-
-            <div class="about-section">
-                <h2>Our Values</h2>
-                <div class="team-values">
-                    <div class="value-card">
-                        <h3>Intentionality</h3>
-                        <p>Every story element serves a purpose in supporting children's emotional and cognitive development.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>Authenticity</h3>
-                        <p>We create genuine, relatable characters and situations that reflect real childhood experiences.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>Inclusivity</h3>
-                        <p>Our stories celebrate diversity and help children understand different perspectives and experiences.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>Quality</h3>
-                        <p>We're committed to excellence in every frame, ensuring our animation meets the highest standards.</p>
-                    </div>
+        <section class="team-showcase">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-icon">W</div>
+                    <h3>Willow Rivers</h3>
+                    <p>A passionate storytellers and the founder of this studio</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">L</div>
+                    <h3>Liam Smith</h3>
+                    <p>The single dev that makes this website possible</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">Y</div>
+                    <h3>Yuri Morgan</h3>
+                    <p>Our animator, character designer, and illustrator</p>
                 </div>
             </div>
+        </section>
 
-            <div class="about-section">
-                <h2>Working Remote, Dreaming Together</h2>
-                <p>As a remote studio, we've proven that physical distance doesn't diminish creative collaboration. Our distributed team model allows us to work with the best talent regardless of location, bringing together diverse voices and perspectives that enrich our storytelling.</p>
-                <p>We leverage modern tools and communication platforms to stay connected, share ideas, and build projects collaboratively. This flexibility enables our team members to work in environments where they're most creative and productive, while maintaining the close collaboration essential to great animation.</p>
+        <section class="values-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card-interactive">
+                    <span class="value-icon">✨</span>
+                    <h3>Authenticity</h3>
+                </div>
+                <div class="value-card-interactive">
+                    <span class="value-icon">❤️</span>
+                    <h3>Emotional Growth</h3>
+                </div>
+                <div class="value-card-interactive">
+                    <span class="value-icon">🎭</span>
+                    <h3>Creative Freedom</h3>
+                </div>
+                <div class="value-card-interactive">
+                    <span class="value-icon">🎯</span>
+                    <h3>Purpose-Driven</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2>Behind The Scenes</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/style.jpg" alt="Designing Style">
+                    <div class="gallery-overlay">
+                        <h3>Designing Style</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/code.png" alt="Coding Frontend">
+                    <div class="gallery-overlay">
+                        <h3>Coding Frontend</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/timelapse.gif" alt="Drawing Elements">
+                    <div class="gallery-overlay">
+                        <h3>Drawing Elements</h3>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="cta-section">
             <div class="container">
-                <h2>Interested in Our Work?</h2>
-                <p>Follow our journey and see what we're creating for the next generation.</p>
-                <a href="works.html" class="btn-secondary">View Our Projects</a>
+                <h2>Join Us on This Journey</h2>
+                <p>We're always looking for passionate individuals who share our vision</p>
+                <a href="join.html" class="btn-primary">Join Our Team</a>
             </div>
         </section>
     </main>
@@ -92,7 +508,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="logo.png" alt="Mloop Studio" class="footer-logo">
+                    <img src="images/logo-white.png" alt="Mloop Studio" class="footer-logo">
                     <p>Creating meaningful children's entertainment through 2D animation.</p>
                 </div>
                 <div class="footer-section">
@@ -107,21 +523,40 @@
                 <div class="footer-section">
                     <h4>Connect With Us</h4>
                     <div class="social-links">
-                        <a href="https://x.com/mloopstudio" target="_blank">X (Twitter)</a>
                         <a href="https://instagram.com/mloopstudio" target="_blank">Instagram</a>
+                        <a href="https://youtube.com/@mloopstudio" target="_blank">YouTube</a>
+                        <a href="https://mloopstudio.github.io" target="_blank">Website</a>
+                        <a href="mailto:mloopstudio@gmail.com">Gmail</a>
                     </div>
-                    <p class="contact-info">
-                        <strong>Email:</strong> mloopstudio@gmail.com<br>
-                        <strong>Web:</strong> mloopstudio.github.io
-                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Mloop Studio. All rights reserved.</p>
+                <p>
+                    &copy; 2025 Mloop Studio. All rights reserved. | 
+                    <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+                </p>
+                <p class="font-credit">
+                    Font: <a href="http://www.onlinewebfonts.com" target="_blank">Sifonn</a> 
+                    by OnlineWebFonts.com (CC BY 4.0)
+                </p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Animate timeline items on scroll
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            timelineObserver.observe(item);
+        });
+    </script>
 </body>
 </html>

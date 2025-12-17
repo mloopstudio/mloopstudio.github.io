@@ -5,6 +5,251 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Mloop Studio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero Section Animations */
+        .hero {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-content h1 {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-content .btn-primary {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-image {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s ease 0.3s forwards;
+        }
+
+        .hero-image img {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Highlights Section Enhanced */
+        .highlights h2 {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .highlights h2.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight-card {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(139, 158, 147, 0.1);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+
+        .highlight-card:hover::before {
+            left: 100%;
+        }
+
+        .highlight-card:hover .icon-image {
+            transform: translateY(-10px);
+        }
+
+        .icon-image {
+            transition: transform 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .icon-image:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .highlight-card h3 {
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .highlight-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .highlight-card p {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* CTA Section Animation */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-circle at center;
+            opacity: 0.1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        .cta-section h2 {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .cta-section h2.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-section p {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .cta-section p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-section .btn-secondary {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.4s;
+            display: inline-block;
+        }
+
+        .cta-section .btn-secondary.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-section .btn-secondary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Chat bubbles enhanced animation */
+        .chat-bubble {
+            transition: all 0.3s ease;
+        }
+
+        .chat-bubble:hover {
+            transform: scale(1.02);
+        }
+
+        .chat-bubble:hover .bubble-content {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .chat-bubble:hover .bubble-image img {
+            transform: scale(1.05);
+        }
+
+        .bubble-image img {
+            transition: transform 0.4s ease;
+        }
+
+        /* Footer Animation */
+        footer {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Button pulse animation */
+        @keyframes buttonPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(244, 182, 115, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(244, 182, 115, 0);
+            }
+        }
+
+        .btn-primary {
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        .btn-primary:hover {
+            animation: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -34,7 +279,6 @@
             <div class="hero-content">
                 <h1>What is Mloop Studio?</h1>
                 <p class="hero-subtitle">Mloop Studio is a 2D animation studio focused on meaningful children's entertainment, created with purpose and care.</p>
-                <a href="#mission" class="btn-primary">Read More</a>
             </div>
             <div class="hero-image">
                 <img src="images/Teo.png" alt="Character Design">
@@ -60,7 +304,7 @@
                     </div>
                     <div class="highlight-card">
                         <div class="icon-image">
-                            <img src="images/teo2.png" alt=">2D Animation">
+                            <img src="images/teo2.png" alt="2D Animation">
                         </div>
                         <h3>2D Animation</h3>
                         <p>Producing high-quality animation that brings our meaningful stories to life.</p>
@@ -125,5 +369,57 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Additional animations for index page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate highlights title
+            const highlightsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const highlightsTitle = document.querySelector('.highlights h2');
+            if (highlightsTitle) {
+                highlightsObserver.observe(highlightsTitle);
+            }
+
+            // Animate CTA section elements
+            const ctaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const h2 = entry.target.querySelector('h2');
+                        const p = entry.target.querySelector('p');
+                        const btn = entry.target.querySelector('.btn-secondary');
+                        
+                        if (h2) h2.classList.add('visible');
+                        if (p) p.classList.add('visible');
+                        if (btn) btn.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            const ctaSection = document.querySelector('.cta-section');
+            if (ctaSection) {
+                ctaObserver.observe(ctaSection);
+            }
+
+            // Animate footer
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footerObserver.observe(footer);
+            }
+        });
+    </script>
 </body>
 </html>

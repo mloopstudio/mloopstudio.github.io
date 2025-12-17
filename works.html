@@ -26,12 +26,125 @@
             font-size: 4rem;
             color: var(--fg-dark);
             margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: slideDown 0.8s ease 0.2s forwards;
         }
 
         .coming-soon-content p {
             font-size: 1.3rem;
             color: var(--dominant);
             line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideDown 0.8s ease 0.4s forwards;
+        }
+
+        @keyframes slideDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .coming-soon-image {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s ease 0.6s forwards;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .coming-soon-image:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .coming-soon-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .coming-soon-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkleAnimation 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .sparkle:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle:nth-child(3) {
+            top: 40%;
+            left: 90%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(4) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleAnimation {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Footer animation */
+        footer {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Responsive */
@@ -42,6 +155,16 @@
 
             .coming-soon-content p {
                 font-size: 1.1rem;
+            }
+
+            .coming-soon-image {
+                max-width: 90%;
+            }
+
+            .coming-soon-section::before,
+            .coming-soon-section::after {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -71,9 +194,16 @@
 
     <main>
         <section class="coming-soon-section">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
             <div class="coming-soon-content">
                 <h1>Coming Soon</h1>
-                <p>We're working on something special. Check back soon!</p>
+                <p>We're working on something special. Here's the sneak peak!</p>
+                <div class="coming-soon-image">
+                    <img src="images/timeline.png" alt="Coming Soon">
+                </div>
             </div>
         </section>
     </main>
@@ -118,5 +248,22 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Animate footer when visible
+        document.addEventListener('DOMContentLoaded', () => {
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footerObserver.observe(footer);
+            }
+        });
+    </script>
 </body>
 </html>
