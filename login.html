@@ -3,357 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Mloop Studio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Employee Login</title>
     <style>
-        /* Login page specific styles */
-        .login-container {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 20px;
-            background-color: var(--bg-neutral);
-        }
-
-        .login-box {
-            background-color: var(--bg-white);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            max-width: 450px;
-            width: 100%;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .login-header h1 {
-            font-family: var(--font-accent);
-            color: var(--fg-dark);
-            margin-bottom: 0.5rem;
-            font-size: 2.5rem;
-        }
-
-        .login-header p {
-            color: var(--dominant);
-            font-size: 0.95rem;
-        }
-
-        .employee-notice {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-
-        .employee-notice p {
-            color: #856404;
-            font-size: 0.9rem;
-            line-height: 1.5;
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
             margin: 0;
+            padding: 20px;
         }
 
-        .employee-notice a {
-            color: #856404;
-            text-decoration: underline;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        h1 {
+            color: #000080;
+            font-size: 18px;
+            border-bottom: 1px solid #000080;
+            padding-bottom: 5px;
+            margin: 0 0 5px 0;
         }
 
-        .form-group label {
+        .subtitle {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .warning {
+            background: #ffe0e0;
+            border: 1px solid #cc0000;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .error {
+            background: #ffcccc;
+            border: 1px solid #cc0000;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #cc0000;
+            display: none;
+        }
+
+        .error.show {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--fg-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
         }
 
-        .form-group input {
+        .form-box {
+            background: #f5f5f5;
+            border: 1px solid #aaa;
+            padding: 15px;
+        }
+
+        table {
             width: 100%;
-            padding: 0.9rem;
-            border: 2px solid var(--bg-neutral);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: var(--font-primary);
-            transition: border-color 0.3s;
-            background-color: var(--bg-white);
-            color: var(--fg-dark);
+            border-collapse: collapse;
         }
 
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--accent);
+        td {
+            padding: 8px 5px;
+            font-size: 12px;
         }
 
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
+        label {
+            font-weight: bold;
         }
 
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #999;
+            font-size: 12px;
+            box-sizing: border-box;
         }
 
-        .remember-me input[type="checkbox"] {
-            width: auto;
+        .buttons {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 6px 20px;
+            font-size: 12px;
             cursor: pointer;
-        }
-
-        .forgot-password {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .forgot-password:hover {
-            color: var(--dominant);
-            text-decoration: underline;
+            border: 1px solid #999;
         }
 
         .btn-login {
-            width: 100%;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            border: none;
-            font-weight: 600;
-            font-family: var(--font-primary);
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: var(--accent);
-            color: var(--fg-dark);
+            background: #4a90e2;
+            color: white;
+            border-color: #2e5f99;
+            font-weight: bold;
         }
 
-        .btn-login:hover {
-            background-color: var(--dominant);
-            color: var(--bg-white);
-            transform: translateY(-2px);
+        .btn-clear {
+            background: #ddd;
+            color: #333;
+            margin-left: 8px;
         }
 
-        .btn-login:disabled {
-            background-color: var(--bg-neutral);
-            color: var(--fg-dark);
+        button:disabled {
+            background: #ccc;
             cursor: not-allowed;
-            transform: none;
-            opacity: 0.6;
         }
 
-        .divider {
+        .links {
             text-align: center;
-            margin: 1.5rem 0;
-            color: var(--dominant);
-            font-size: 0.9rem;
+            margin-top: 12px;
+            font-size: 11px;
         }
 
-        .tech-notice {
-            background-color: var(--supporting);
-            color: var(--bg-white);
-            padding: 1.2rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-            text-align: center;
+        .links a {
+            color: #0000ee;
         }
 
-        .tech-notice p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin: 0;
+        .notice {
+            background: #ffffdd;
+            border: 1px solid #cccc00;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 11px;
         }
 
-        .tech-notice strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .error-message {
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-            border-left: 4px solid #f5c6cb;
-        }
-
-        .error-message.show {
-            display: block;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .login-box {
-                padding: 2rem 1.5rem;
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
             }
 
-            .login-header h1 {
-                font-size: 2rem;
+            table {
+                display: block;
             }
 
-            .form-options {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
+            tr {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            td {
+                display: block;
+                width: 100%;
+                padding: 3px 0;
+            }
+
+            .buttons button {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .btn-clear {
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="Mloop Studio">
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="works.html">Our Works</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="join.html">Join Our Team</a></li>
-                    <li><a href="login.html" class="login-btn active">Login</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <div class="container">
+        <h1>Employee Login</h1>
+        <h1>(STILL UNDER CONSTRUCTION)</h1>
+        <div class="subtitle">v2.1.3 | Updated: Dec 2025 | Status: Limited Frontend, and Backend.. not yet lol</div>
+        
+        <div class="warning">
+            <strong>Warning:</strong> Employees only. Not an employee? Go back to <a href="index.html">homepage</a>.
+        </div>
 
-    <main>
-        <div class="login-container">
-            <div class="login-box">
-                <div class="login-header">
-                    <h1>Employee Portal</h1>
-                    <p>Sign in to access your workspace</p>
-                </div>
+        <div class="error" id="errorMsg">
+            <strong>Error:</strong> Login failed. Check credentials or email mloopstudio@gmail.com
+        </div>
 
-                <div class="employee-notice">
-                    <p>⚠️ <strong>Employees Only:</strong> This portal is exclusively for Mloop Studio team members. If you're not an employee, please return to our <a href="index.html">home page</a>.</p>
-                </div>
-
-                <div class="error-message" id="errorMessage">
-                    Invalid credentials. Please try again or contact mloopstudio@gmail.com.
-                </div>
-
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    </div>
-
-                    <div class="form-options">
-                        <label class="remember-me">
+        <div class="form-box">
+            <form id="loginForm">
+                <table>
+                    <tr>
+                        <td><label for="username">Email:</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="username" name="username" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" id="password" name="password" required></td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="checkbox" id="remember" name="remember">
-                            <span>Remember me</span>
-                        </label>
-                        <a href="#" class="forgot-password" id="forgotPassword">Forgot Password?</a>
-                    </div>
+                            <label for="remember" style="font-weight: normal;">Remember me</label>
+                        </td>
+                    </tr>
+                </table>
 
-                    <button type="submit" class="btn-login" id="loginBtn">Sign In</button>
-                </form>
-
-                <div class="divider">───────</div>
-
-                <div class="tech-notice">
-                    <strong>🔧 Portal Under Development</strong>
-                    <p>We're building our employee portal with Supabase. For now, please contact <a href="mailto:mloopstudio@gmail.com" style="color: var(--bg-white); text-decoration: underline;">mloopstudio@gmail.com</a> for access.</p>
+                <div class="buttons">
+                    <button type="submit" class="btn-login" id="loginBtn">LOGIN</button>
+                    <button type="reset" class="btn-clear">CLEAR</button>
                 </div>
-            </div>
+
+                <div class="links">
+                    <a href="#" id="forgotPass">Forgot password?</a> | 
+                    <a href="mailto:mloopstudio@gmail.com">Need access?</a> | 
+                    <a href="mailto:mloopstudio@gmail.com">Support</a>
+                </div>
+            </form>
         </div>
-    </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="images/logo-white.png" alt="Mloop Studio" class="footer-logo">
-                    <p>Creating meaningful children's entertainment through 2D animation.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="works.html">Our Works</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="join.html">Join Our Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/mloopstudio" target="_blank">Instagram</a>
-                        <a href="https://youtube.com/@mloopstudio" target="_blank">YouTube</a>
-                        <a href="https://mloopstudio.github.io" target="_blank">Website</a>
-                        <a href="mailto:mloopstudio@gmail.com">Gmail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>
-                    &copy; 2025 Mloop Studio. All rights reserved. | 
-                    <a href="privacy.html" class="privacy-link">Privacy Policy</a>
-                </p>
-                <p class="font-credit">
-                    Font: <a href="http://www.onlinewebfonts.com" target="_blank">Sifonn</a> 
-                    by OnlineWebFonts.com (CC BY 4.0)
-                </p>
-            </div>
+        <div class="notice">
+            <strong>Note:</strong> Portal under construction. Using Supabase for auth and backend. Contact mloopstudio@gmail.com for access.
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
     <script>
-        // Login form handling
-        const loginForm = document.getElementById('loginForm');
-        const loginBtn = document.getElementById('loginBtn');
-        const errorMessage = document.getElementById('errorMessage');
-        const forgotPasswordLink = document.getElementById('forgotPassword');
+        const form = document.getElementById('loginForm');
+        const btn = document.getElementById('loginBtn');
+        const err = document.getElementById('errorMsg');
+        const forgot = document.getElementById('forgotPass');
 
-        loginForm.addEventListener('submit', (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
+            btn.disabled = true;
+            btn.textContent = 'LOGGING IN...';
             
-            // Disable button
-            loginBtn.disabled = true;
-            loginBtn.textContent = 'Signing in...';
-            
-            // Simulate login attempt (since portal is under development)
             setTimeout(() => {
-                // Show error message
-                errorMessage.classList.add('show');
+                err.classList.add('show');
+                btn.disabled = false;
+                btn.textContent = 'LOGIN';
                 
-                // Re-enable button
-                loginBtn.disabled = false;
-                loginBtn.textContent = 'Sign In';
-                
-                // Hide error after 5 seconds
                 setTimeout(() => {
-                    errorMessage.classList.remove('show');
+                    err.classList.remove('show');
                 }, 5000);
             }, 1000);
         });
 
-        // Forgot password handler
-        forgotPasswordLink.addEventListener('click', (e) => {
+        forgot.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('Please contact mloopstudio@gmail.com to reset your password.');
+            alert('Contact IT at mloopstudio@gmail.com to reset password.');
         });
     </script>
 </body>
