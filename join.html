@@ -5,13 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Our Team - Mloop Studio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        /* Form-specific styles */
+        .page-hero {
+            background-color: var(--dominant);
+            color: var(--bg-white);
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-accent);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .form-section {
+            padding: 4rem 20px;
+            background-color: var(--bg-neutral);
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-intro h2 {
+            font-family: var(--font-accent);
+            color: var(--fg-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-intro p {
+            color: var(--dominant);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--fg-dark);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .required {
+            color: var(--accent);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid var(--bg-neutral);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            transition: border-color 0.3s;
+            background-color: var(--bg-white);
+            color: var(--fg-dark);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            background-color: var(--accent);
+            color: var(--fg-dark);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--dominant);
+            color: var(--bg-white);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:disabled {
+            background-color: var(--bg-neutral);
+            color: var(--fg-dark);
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.6;
+        }
+
+        .status-message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .status-message.success {
+            background-color: var(--supporting);
+            color: var(--bg-white);
+            display: block;
+        }
+
+        .status-message.error {
+            background-color: #e07a5f;
+            color: var(--bg-white);
+            display: block;
+        }
+
+        .info-box {
+            background-color: var(--bg-neutral);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-intro h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.html" class="logo">
-                    <img src="logo-text.png" alt="Mloop Studio">
+                    <img src="images/logo.png" alt="Mloop Studio">
                 </a>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -30,98 +204,82 @@
     </header>
 
     <main>
-        <section class="join-hero">
-            <div class="container">
-                <h1>Join Our Creative Team</h1>
-                <p>Be part of something meaningful. Help us create stories that shape tomorrow's generation.</p>
-            </div>
-        </section>
+        <div class="page-hero">
+            <h1>Join Our Team</h1>
+            <p>We're looking for passionate artists who share our vision</p>
+        </div>
 
-        <section class="perks-section">
-            <div class="container">
-                <h2>Perks of Joining Our Team</h2>
-                <div class="perks-grid">
-                    <div class="perk-card">
-                        <h3>🕐 Flexible Work Hours</h3>
-                        <p>Work when you're most creative and productive. We understand that great animation doesn't happen on a rigid 9-to-5 schedule. Set your own hours and manage your time in a way that fits your lifestyle and creative rhythm.</p>
-                    </div>
-
-                    <div class="perk-card">
-                        <h3>💰 Secure & Flexible Payment</h3>
-                        <p>Enjoy reliable compensation with payment options that work for you. Whether you prefer project-based or retainer arrangements, we offer secure and timely payments through methods that suit your needs, no matter where you're located.</p>
-                    </div>
-
-                    <div class="perk-card">
-                        <h3>🎨 Software Freedom</h3>
-                        <p>Use the tools you love. We don't mandate specific software since we primarily work with PNG sequence exports. Whether you prefer TVPaint, Toon Boom, Adobe Animate, or any other animation software, you're free to work with what makes you most comfortable and efficient.</p>
-                    </div>
-
-                    <div class="perk-card">
-                        <h3>☁️ Seamless Collaboration</h3>
-                        <p>Stay connected with dedicated communication tools and private cloud storage. Our team uses professional-grade platforms for project management, file sharing, and real-time collaboration, ensuring smooth workflows despite the distance.</p>
-                    </div>
+        <div class="form-section">
+            <div class="form-container">
+                <div class="form-intro">
+                    <h2>Application Form</h2>
+                    <p>Tell us about yourself and your creative journey</p>
                 </div>
-            </div>
-        </section>
 
-        <section class="guidelines-section">
-            <div class="container">
-                <h2>Example Guidelines of Our Team</h2>
-                <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    We maintain clear, professional standards for all our projects. Here's a glimpse of the kind of documentation and guidelines we provide to ensure consistency and quality across all our work.
-                </p>
-                    <div class="guidelines-image">
-    <iframe
-        src="example1.pdf"
-        title="Team Guidelines PDF">
-        <p>
-            Your browser does not support embedded PDFs.
-            <a href="example1.pdf">Download the PDF</a>.
-        </p>
-    </iframe>
-</div>
-            </div>
-        </section>
-
-        <section class="about-content" style="background-color: var(--bg-neutral); padding: 4rem 20px;">
-            <div class="about-section" style="max-width: 900px; margin: 0 auto;">
-                <h2 style="text-align: center;">What We're Looking For</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">While specific positions vary, here are qualities we value in all team members:</p>
-                <div class="team-values">
-                    <div class="value-card">
-                        <h3>Passion for Storytelling</h3>
-                        <p>A genuine interest in creating meaningful content for children that goes beyond entertainment.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>Strong Communication</h3>
-                        <p>Ability to collaborate effectively in a remote environment and articulate creative ideas clearly.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>Attention to Detail</h3>
-                        <p>Commitment to quality and consistency in every aspect of your work.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>Self-Motivated</h3>
-                        <p>Ability to manage your time effectively and meet deadlines without constant supervision.</p>
-                    </div>
+                <div class="info-box">
+                    <p>💡 We're a remote studio creating meaningful children's entertainment. We value passion, purpose, and the desire to make a positive impact through animation.</p>
                 </div>
-            </div>
-        </section>
 
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Create With Us?</h2>
-                <p>Send us your portfolio and tell us why you'd be a great fit for Mloop Studio.</p>
-                <a href="mailto:mloopstudio@gmail.com?subject=Application%20to%20Join%20Mloop%20Studio" class="btn-secondary">Apply Now</a>
+                <form id="hiringForm">
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="position">Position Applying For <span class="required">*</span></label>
+                        <select id="position" name="position" required>
+                            <option value="">-- Select Position --</option>
+                            <option value="2D Animator">2D Animator</option>
+                            <option value="Character Designer">Character Designer</option>
+                            <option value="Background Artist">Background Artist</option>
+                            <option value="Storyboard Artist">Storyboard Artist</option>
+                            <option value="Game Designer">Game Designer</option>
+                            <option value="Illustrator">Illustrator</option>
+                            <option value="Motion Graphics Artist">Motion Graphics Artist</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Experience Level <span class="required">*</span></label>
+                        <select id="experience" name="experience" required>
+                            <option value="">-- Select Experience --</option>
+                            <option value="Entry Level / Student">Entry Level / Student</option>
+                            <option value="Junior (1-2 years)">Junior (1-2 years)</option>
+                            <option value="Mid-Level (3-5 years)">Mid-Level (3-5 years)</option>
+                            <option value="Senior (5+ years)">Senior (5+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio Link <span class="required">*</span></label>
+                        <input type="url" id="portfolio" name="portfolio" placeholder="https://..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Why do you want to join Mloop Studio?</label>
+                        <textarea id="message" name="message" placeholder="Tell us about yourself and why you're passionate about meaningful children's entertainment..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
+
+                    <div class="status-message" id="statusMessage"></div>
+                </form>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="logo.png" alt="Mloop Studio" class="footer-logo">
+                    <img src="images/logo-white.png" alt="Mloop Studio" class="footer-logo">
                     <p>Creating meaningful children's entertainment through 2D animation.</p>
                 </div>
                 <div class="footer-section">
@@ -136,21 +294,82 @@
                 <div class="footer-section">
                     <h4>Connect With Us</h4>
                     <div class="social-links">
-                        <a href="https://x.com/mloopstudio" target="_blank">X (Twitter)</a>
                         <a href="https://instagram.com/mloopstudio" target="_blank">Instagram</a>
+                        <a href="https://youtube.com/@mloopstudio" target="_blank">YouTube</a>
+                        <a href="https://mloopstudio.github.io" target="_blank">Website</a>
+                        <a href="mailto:mloopstudio@gmail.com">Gmail</a>
                     </div>
-                    <p class="contact-info">
-                        <strong>Email:</strong> mloopstudio@gmail.com<br>
-                        <strong>Web:</strong> mloopstudio.github.io
-                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Mloop Studio. All rights reserved.</p>
+                <p>
+                    &copy; 2025 Mloop Studio. All rights reserved. | 
+                    <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+                </p>
+                <p class="font-credit">
+                    Font: <a href="http://www.onlinewebfonts.com" target="_blank">Sifonn</a> 
+                    by OnlineWebFonts.com (CC BY 4.0)
+                </p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // EmailJS Configuration
+        const EMAILJS_PUBLIC_KEY = 'WddkzC_OL6fgUp7fr';
+        const EMAILJS_SERVICE_ID = 'service_yevi5ss';
+        const EMAILJS_TEMPLATE_ID = 'template_hmju2wb';
+
+        // Initialize EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        const form = document.getElementById('hiringForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                position: document.getElementById('position').value,
+                experience: document.getElementById('experience').value,
+                portfolio: document.getElementById('portfolio').value,
+                message: document.getElementById('message').value || 'No message provided'
+            };
+
+            try {
+                // Send email using EmailJS
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData);
+                
+                showMessage('✅ Application submitted successfully! We\'ll be in touch soon.', 'success');
+                form.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('❌ Failed to send application. Please try again or email us directly at mloopstudio@gmail.com', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            }
+        });
+
+        function showMessage(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusMessage.style.display = 'none';
+                }, 8000);
+            }
+        }
+    </script>
 </body>
 </html>
