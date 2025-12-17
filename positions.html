@@ -6,32 +6,27 @@
     <title>Open Positions - Mloop Studio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Positions page specific styles */
         .positions-hero {
             background-color: var(--dominant);
             color: var(--bg-white);
             padding: 4rem 20px;
             text-align: center;
         }
-
         .positions-hero h1 {
             font-family: var(--font-accent);
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-
         .positions-hero p {
             font-size: 1.2rem;
             opacity: 0.95;
             max-width: 700px;
             margin: 0 auto;
         }
-
         .why-join-section {
             padding: 4rem 20px;
             background-color: var(--bg-white);
         }
-
         .why-join-section h2 {
             font-family: var(--font-accent);
             font-size: 2.5rem;
@@ -39,7 +34,6 @@
             color: var(--fg-dark);
             margin-bottom: 3rem;
         }
-
         .perks-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -47,7 +41,6 @@
             max-width: 1200px;
             margin: 0 auto 3rem;
         }
-
         .perk-card {
             background-color: var(--bg-white);
             padding: 2rem;
@@ -55,616 +48,246 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-left: 4px solid var(--accent);
         }
-
         .perk-card h3 {
             color: var(--dominant);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
-
         .perk-card p {
             line-height: 1.7;
             color: var(--fg-dark);
         }
-
-        /* Research Paper Style Document */
         .paper-section {
             padding: 4rem 20px;
             background-color: #f5f5f5;
         }
-
         .paper-container {
             max-width: 850px;
             margin: 0 auto;
             background-color: #ffffff;
             padding: 4rem 5rem;
             box-shadow: 0 0 30px rgba(0,0,0,0.1);
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: Georgia, serif;
             line-height: 1.8;
             color: #000;
         }
-
-        /* Paper Header */
         .paper-header {
             text-align: center;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
             border-bottom: 1px solid #000;
         }
-
         .paper-header h1 {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #000;
             margin-bottom: 1.5rem;
-            line-height: 1.3;
-            text-transform: none;
         }
-
         .paper-authors {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
             font-style: italic;
+            margin-bottom: 0.5rem;
         }
-
-        .paper-affiliation {
-            font-size: 0.9rem;
-            color: #333;
-            margin-bottom: 0.3rem;
-        }
-
         .paper-date {
             font-size: 0.85rem;
-            color: #666;
-            margin-top: 1rem;
         }
-
-        /* Abstract */
-        .abstract {
-            margin: 2.5rem 0;
-            padding: 1.5rem;
-            background-color: #fafafa;
-            border-left: 3px solid #000;
-        }
-
-        .abstract h2 {
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .abstract p {
-            font-size: 0.95rem;
-            text-align: justify;
-            line-height: 1.7;
-        }
-
-        /* Section Headers */
         .section-header {
             font-size: 1.2rem;
             font-weight: bold;
-            margin: 2.5rem 0 1.2rem 0;
-            color: #000;
+            margin: 2.5rem 0 1.2rem;
         }
-
         .subsection-header {
             font-size: 1.05rem;
             font-weight: bold;
-            margin: 2rem 0 1rem 0;
+            margin: 2rem 0 1rem;
             font-style: italic;
-            color: #000;
         }
-
-        /* Body Text */
         .paper-body p {
             font-size: 0.95rem;
             text-align: justify;
             margin-bottom: 1rem;
             text-indent: 2em;
         }
-
         .paper-body p.no-indent {
             text-indent: 0;
         }
-
-        /* Position Entries in Table Format */
         .position-table {
             width: 100%;
             margin: 1.5rem 0;
             border-collapse: collapse;
             font-size: 0.9rem;
         }
-
         .position-table thead {
             background-color: #f0f0f0;
             border-top: 2px solid #000;
             border-bottom: 2px solid #000;
         }
-
-        .position-table th {
-            padding: 0.8rem;
-            text-align: left;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
+        .position-table th,
         .position-table td {
             padding: 0.8rem;
-            border-bottom: 1px solid #ddd;
+            text-align: left;
             vertical-align: top;
         }
-
         .position-table tbody tr:last-child td {
             border-bottom: 2px solid #000;
         }
-
-        .position-number {
-            font-weight: bold;
-            width: 10%;
-        }
-
-        .position-title {
-            font-weight: bold;
-            width: 35%;
-        }
-
-        .position-desc {
-            width: 40%;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .position-seats {
-            width: 15%;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* References */
         .references {
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid #000;
         }
-
-        .references h2 {
-            font-size: 1rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .references p {
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-            text-indent: -2em;
-            padding-left: 2em;
-        }
-
-        /* Footer Note */
         .paper-footer {
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 2px solid #000;
             text-align: center;
         }
-
-        .paper-footer p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            text-indent: 0;
-            text-align: center;
-        }
-
         .apply-button {
             display: inline-block;
             padding: 0.8rem 2.5rem;
             background-color: #000;
             color: #fff;
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: bold;
-            border: 2px solid #000;
-            transition: all 0.3s ease;
-            font-family: Georgia, serif;
-            letter-spacing: 1px;
             margin-top: 1rem;
-        }
-
-        .apply-button:hover {
-            background-color: #fff;
-            color: #000;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .positions-hero h1 {
-                font-size: 2rem;
-            }
-
-            .paper-container {
-                padding: 2rem 1.5rem;
-            }
-
-            .paper-header h1 {
-                font-size: 1.4rem;
-            }
-
-            .position-table {
-                font-size: 0.8rem;
-            }
-
-            .position-table th,
-            .position-table td {
-                padding: 0.5rem;
-            }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="Mloop Studio">
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="works.html">Our Works</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="join.html" class="active">Join Our Team</a></li>
-                    <li><a href="login.html" class="login-btn">Login</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="positions-hero">
-            <h1>Open Positions</h1>
-            <p>Join our remote team creating meaningful children's entertainment</p>
+<header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Mloop Studio">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="works.html">Our Works</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="join.html" class="active">Join Our Team</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
         </div>
+    </nav>
+</header>
 
-        <section class="why-join-section">
-            <div class="container">
-                <h2>Why Join Mloop Studio?</h2>
-                <div class="perks-grid">
-                    <div class="perk-card">
-                        <h3>💰 Secure & Flexible Payment</h3>
-                        <p>Enjoy reliable compensation with payment options that work for you. Whether you prefer project-based or retainer arrangements, we offer secure and timely payments through methods that suit your needs, no matter where you're located.</p>
-                    </div>
-                    <div class="perk-card">
-                        <h3>🎨 Software Freedom</h3>
-                        <p>Use the tools you love. We don't mandate specific software since we primarily work with PNG sequence exports. Whether you prefer TVPaint, Toon Boom, Adobe Animate, or any other animation software, you're free to work with what makes you most comfortable and efficient.</p>
-                    </div>
-                    <div class="perk-card">
-                        <h3>☁️ Seamless Collaboration</h3>
-                        <p>Stay connected with dedicated communication tools and private cloud storage. Our team uses Discord for quick chats, Google Drive for file sharing, and clear project guidelines to keep everything running smoothly despite the distance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<main>
+<section class="paper-section">
+<div class="paper-container">
 
-        <section class="paper-section">
-            <div class="paper-container">
-                <!-- Paper Header -->
-                <div class="paper-header">
-                    <h1>Open Position Announcements and Recruitment Framework for Remote Creative Production Teams in Children's Entertainment Media</h1>
-                    <p class="paper-authors">Mloop Studio Human Resources Department</p>
-                    <p class="paper-affiliation">Mloop Studio, Remote Global Operations</p>
-                    <p class="paper-affiliation">Email: mloopstudio@gmail.com | Web: mloopstudio.github.io</p>
-                    <p class="paper-date">Published: December 2025 | Version: 1.0</p>
-                </div>
+<div class="paper-header">
+    <h1>Open Positions in Mloop Studio</h1>
+    <p class="paper-authors">By Mloop Studio Human Resources Management</p>
+    <p class="paper-date">December 2025</p>
+</div>
 
-                <!-- Abstract -->
-                <div class="abstract">
-                    <h2>Abstract</h2>
-                    <p>This document outlines current employment opportunities within Mloop Studio, an independent remote animation studio specializing in purpose-driven children's entertainment. We present comprehensive role specifications across five operational departments: 2D Animation Series, Game Development & Learning Resources, Web Development & Digital Infrastructure, Audio/Marketing/Post-Production, and Leadership & Management. Priority recruitment focuses on 2D animation production roles to support upcoming series development cycles. All positions operate within a remote-first framework with flexible compensation structures and software-agnostic production pipelines.</p>
-                </div>
+<div class="paper-body">
+<h2 class="section-header">1. Who We Are</h2>
+<p class="no-indent">Mloop Studio is an independent animation studio dedicated to creating thoughtful, emotionally meaningful children’s entertainment. Through hand-drawn 2D animation and interactive educational media, we aim to support curiosity, creativity, and self-awareness in young audiences.</p>
+<p>Our team works remotely across different time zones, connected by a shared purpose rather than a shared location. We value kindness, clear communication, and collaboration rooted in trust.</p>
 
-                <!-- Introduction -->
-                <div class="paper-body">
-                    <h2 class="section-header">1. Introduction</h2>
-                    <p class="no-indent">Mloop Studio operates as a distributed creative production company focused on developing meaningful children's entertainment through traditional 2D animation and interactive educational media. Our organizational structure supports remote collaboration across global time zones, utilizing contemporary digital communication platforms and cloud-based asset management systems.</p>
-                    <p>The current recruitment cycle prioritizes production capacity expansion within our 2D Animation Series department to meet projected content delivery schedules for 2025-2026. Secondary recruitment addresses specialized technical roles in game development, web infrastructure, and post-production workflows.</p>
+<h2 class="section-header">2. Departments & Open Roles</h2>
 
-                    <h2 class="section-header">2. Departmental Structure and Available Positions</h2>
-                    
-                    <h3 class="subsection-header">2.1 Department I: 2D Animation Series Production</h3>
-                    <p class="no-indent">This department represents our primary content creation pipeline, utilizing traditional hand-drawn animation techniques exported as PNG sequences. Current production methodology supports software-agnostic workflows, allowing artists to utilize their preferred animation tools (TVPaint, Toon Boom Harmony, Adobe Animate, or equivalent platforms).</p>
+<h3 class="subsection-header">2.1 2D Animation Series Production</h3>
+<p class="no-indent">This team brings our stories to life through traditional hand-drawn animation, focusing on expressive performance and visual clarity.</p>
 
-                    <table class="position-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Position Title</th>
-                                <th>Primary Responsibilities</th>
-                                <th>Seats</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="position-number">1.1</td>
-                                <td class="position-title">Key Pose Animator (Hand-Drawn)</td>
-                                <td class="position-desc">Establish critical action frames, timing charts, and performance foundation for character animation sequences.</td>
-                                <td class="position-seats">3</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.2</td>
-                                <td class="position-title">Inbetweener (Hand-Drawn)</td>
-                                <td class="position-desc">Generate intermediate frames between established key poses while maintaining volume consistency and timing accuracy.</td>
-                                <td class="position-seats">5</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.3</td>
-                                <td class="position-title">Clean-up & Color Artist</td>
-                                <td class="position-desc">Refine rough animation to final line art, apply color palettes per character specifications, ensure production quality standards.</td>
-                                <td class="position-seats">4</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.4</td>
-                                <td class="position-title">Storyboard Artist</td>
-                                <td class="position-desc">Translate narrative scripts into visual sequential art, establish cinematography and staging conventions for production.</td>
-                                <td class="position-seats">2</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.5</td>
-                                <td class="position-title">Character Designer</td>
-                                <td class="position-desc">Develop character designs with turnarounds, expression sheets, and animation-optimized model specifications.</td>
-                                <td class="position-seats">2</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.6</td>
-                                <td class="position-title">Concept Artist</td>
-                                <td class="position-desc">Establish visual direction through mood paintings, color keys, and environmental concept development.</td>
-                                <td class="position-seats">2</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.7</td>
-                                <td class="position-title">Background Artist</td>
-                                <td class="position-desc">Create environmental layouts with appropriate perspective, atmospheric lighting, and narrative-supporting composition.</td>
-                                <td class="position-seats">3</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">1.8</td>
-                                <td class="position-title">General Animation Role</td>
-                                <td class="position-desc">Portfolio-based assessment for optimal role placement within animation production pipeline.</td>
-                                <td class="position-seats">Open</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<table class="position-table">
+<thead>
+<tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
+</thead>
+<tbody>
+<tr><td>1.1</td><td>Key Pose Animator</td><td>Define key animation poses and timing that form the foundation of each scene.</td><td>8</td></tr>
+<tr><td>1.2</td><td>Inbetweener</td><td>Create in-between frames that ensure smooth and consistent motion.</td><td>5</td></tr>
+<tr><td>1.3</td><td>Clean-up & Color Artist</td><td>Finalize line art and apply approved color palettes.</td><td>3</td></tr>
+<tr><td>1.4</td><td>Storyboard Artist</td><td>Translate scripts into visual sequences that guide animation.</td><td>2</td></tr>
+<tr><td>1.5</td><td>Character Designer</td><td>Design characters for animation with authentic characteristic.</td><td>4</td></tr>
+<tr><td>1.6</td><td>Concept Artist</td><td>Establish visual tone, color keys, and environments.</td><td>2</td></tr>
+<tr><td>1.7</td><td>Background Artist</td><td>Create detailed environments that support storytelling.</td><td>4</td></tr>
+<tr><td>1.8</td><td>Open to Any Role</td><td>Role assigned based on portfolio and production needs.</td><td>Open</td></tr>
+</tbody>
+</table>
 
-                    <h3 class="subsection-header">2.2 Department II: Game Development & Educational Resources</h3>
-                    <p class="no-indent">This division focuses on interactive educational content development utilizing Godot Engine and 2D rigging technologies (Spine, Toon Boom Harmony). Production targets web-based and mobile distribution platforms optimized for pedagogical engagement with young audiences.</p>
+<h3 class="subsection-header">2.2 Game Development & Educational Resources</h3>
+<p class="no-indent">This team builds interactive learning experiences that encourage play, exploration, and understanding.</p>
 
-                    <table class="position-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Position Title</th>
-                                <th>Primary Responsibilities</th>
-                                <th>Seats</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="position-number">2.1</td>
-                                <td class="position-title">2D Rigging Artist</td>
-                                <td class="position-desc">Construct bone-based character rigs with deformation systems optimized for real-time animation performance.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">2.2</td>
-                                <td class="position-title">Game Developer (Godot)</td>
-                                <td class="position-desc">Implement gameplay mechanics via GDScript, integrate multimedia assets, optimize cross-platform performance.</td>
-                                <td class="position-seats">2</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">2.3</td>
-                                <td class="position-title">Character Designer</td>
-                                <td class="position-desc">Design characters with rigging-optimized anatomy, clear component separation for skeletal animation systems.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">2.4</td>
-                                <td class="position-title">Concept Artist</td>
-                                <td class="position-desc">Visualize interactive environments, UI components, and asset libraries supporting educational gameplay.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">2.5</td>
-                                <td class="position-title">Background Artist</td>
-                                <td class="position-desc">Produce parallax-layered environments and modular scene components for interactive media.</td>
-                                <td class="position-seats">2</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">2.6</td>
-                                <td class="position-title">UI/UX Designer</td>
-                                <td class="position-desc">Design age-appropriate interface systems with accessibility considerations for child-focused applications.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">2.7</td>
-                                <td class="position-title">Educational Resource Designer</td>
-                                <td class="position-desc">Create printable learning materials and illustrative content supporting digital educational initiatives.</td>
-                                <td class="position-seats">2</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<table class="position-table">
+<thead>
+<tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
+</thead>
+<tbody>
+<tr><td>2.1</td><td>2D Rigging Artist</td><td>Create rigs for game assets.</td><td>2</td></tr>
+<tr><td>2.2</td><td>Game Developer </td><td>Developing game through preferably godot software.</td><td>3</td></tr>
+<tr><td>2.3</td><td>Character Designer</td><td>Design characters suited for rigged animation.</td><td>2</td></tr>
+<tr><td>2.4</td><td>Concept Artist</td><td>Visualize game worlds and interactive elements.</td><td>1</td></tr>
+<tr><td>2.5</td><td>Background Artist</td><td>Create layered environments for interactive scenes.</td><td>2</td></tr>
+<tr><td>2.6</td><td>UI/UX Designer (game)</td><td>Design child-friendly, accessible interfaces.</td><td>1</td></tr>
+<tr><td>2.7</td><td>Educational Resource Graphic Designer</td><td>Create printable and digital learning materials.</td><td>1</td></tr>
+</tbody>
+</table>
 
-                    <h3 class="subsection-header">2.3 Department III: Web Development & Digital Infrastructure</h3>
-                    <p class="no-indent">This technical division maintains studio digital presence and internal systems utilizing contemporary web technologies and Supabase backend infrastructure.</p>
+<h3 class="subsection-header">2.3 Web Development & Digital Infrastructure</h3>
 
-                    <table class="position-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Position Title</th>
-                                <th>Primary Responsibilities</th>
-                                <th>Seats</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="position-number">3.1</td>
-                                <td class="position-title">Frontend Developer</td>
-                                <td class="position-desc">Develop responsive web interfaces using HTML5, CSS3, and JavaScript frameworks with mobile optimization.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">3.2</td>
-                                <td class="position-title">Backend Developer</td>
-                                <td class="position-desc">Architect server-side systems, database schemas (PostgreSQL/Supabase), and authentication infrastructure.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">3.3</td>
-                                <td class="position-title">Fullstack Developer</td>
-                                <td class="position-desc">Manage complete application development lifecycle from database design through user interface implementation.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">3.4</td>
-                                <td class="position-title">UI/UX Designer</td>
-                                <td class="position-desc">Design web-based interfaces with emphasis on usability standards, accessibility compliance, and information architecture.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<table class="position-table">
+<thead>
+<tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
+</thead>
+<tbody>
+<tr><td>3.1</td><td>Frontend Developer</td><td>Build responsive, accessible user interfaces.</td><td>1</td></tr>
+<tr><td>3.2</td><td>Backend Developer</td><td>Maintain databases, authentication, and backend systems.</td><td>1</td></tr>
+<tr><td>3.3</td><td>Fullstack Developer</td><td>Oversee end-to-end web application development.</td><td>1</td></tr>
+<tr><td>3.4</td><td>UI/UX Designer (web)</td><td>Design intuitive web experiences for our landing page and employees portal.</td><td>1</td></tr>
+</tbody>
+</table>
 
-                    <h3 class="subsection-header">2.4 Department IV: Audio Production, Marketing & Post-Production</h3>
-                    <p class="no-indent">This department encompasses sound design, musical composition, video editing, and audience development strategies for content distribution.</p>
+<h3 class="subsection-header">2.4 Audio, Marketing & Post-Production (For both animation & game departments)</h3>
 
-                    <table class="position-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Position Title</th>
-                                <th>Primary Responsibilities</th>
-                                <th>Seats</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="position-number">4.1</td>
-                                <td class="position-title">Music Composer</td>
-                                <td class="position-desc">Compose original scores, character themes, and atmospheric music supporting narrative content.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">4.2</td>
-                                <td class="position-title">Sound Designer (SFX)</td>
-                                <td class="position-desc">Create sound effects libraries, atmospheric audio, and final mix preparation for animated content.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">4.3</td>
-                                <td class="position-title">Voice Actor/Actress</td>
-                                <td class="position-desc">Perform character dialogue with home recording capabilities, demonstrate vocal range and direction responsiveness.</td>
-                                <td class="position-seats">Open</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">4.4</td>
-                                <td class="position-title">Video Editor</td>
-                                <td class="position-desc">Edit animation sequences, perform color correction, create promotional materials for multi-platform distribution.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">4.5</td>
-                                <td class="position-title">Compositing Artist</td>
-                                <td class="position-desc">Integrate animation layers, apply visual effects, maintain broadcast quality standards through post-production.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">4.6</td>
-                                <td class="position-title">Social Media Manager</td>
-                                <td class="position-desc">Develop content strategies, manage community engagement, analyze performance metrics across digital platforms.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">4.7</td>
-                                <td class="position-title">Content Marketer</td>
-                                <td class="position-desc">Create written promotional materials, develop campaign strategies, manage email communication systems.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<table class="position-table">
+<thead>
+<tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
+</thead>
+<tbody>
+<tr><td>4.1</td><td>Music Composer</td><td>Compose original music supporting narrative tone.</td><td>1</td></tr>
+<tr><td>4.2</td><td>Sound Designer</td><td>Create sound effects and audio environments.</td><td>1</td></tr>
+<tr><td>4.3</td><td>Voice Actor</td><td>Perform character dialogue from a home studio.</td><td>Open</td></tr>
+<tr><td>4.4</td><td>Video Editor (Animation only)</td><td>Edit episodes and promotional content.</td><td>1</td></tr>
+<tr><td>4.5</td><td>Compositing Artist (Animation only)</td><td>Finalize visuals and apply effects.</td><td>Closed</td></tr>
+<tr><td>4.6</td><td>Social Media Manager</td><td>Manage platforms and community engagement.</td><td>1</td></tr>
+<tr><td>4.7</td><td>Content Marketer</td><td>Create written promotional content.</td><td>1</td></tr>
+</tbody>
+</table>
 
-                    <h3 class="subsection-header">2.5 Department V: Leadership & Project Management</h3>
-                    <p class="no-indent">Senior positions responsible for artistic direction, production coordination, and technical oversight across all operational departments.</p>
+<h3 class="subsection-header">2.5 Leadership & Project Management (For both animation & game departments)</h3>
 
-                    <table class="position-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Position Title</th>
-                                <th>Primary Responsibilities</th>
-                                <th>Seats</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="position-number">5.1</td>
-                                <td class="position-title">Art Director</td>
-                                <td class="position-desc">Establish visual standards, approve artistic deliverables, provide mentorship, maintain stylistic consistency.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">5.2</td>
-                                <td class="position-title">Animation Lead</td>
-                                <td class="position-desc">Oversee animation quality, coordinate production schedules, establish technical standards, mentor animation staff.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">5.3</td>
-                                <td class="position-title">Project Manager/Producer</td>
-                                <td class="position-desc">Coordinate cross-departmental workflows, manage timelines and budgets, facilitate communication protocols.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                            <tr>
-                                <td class="position-number">5.4</td>
-                                <td class="position-title">Lead Developer</td>
-                                <td class="position-desc">Establish technical architecture, conduct code reviews, mentor development team, make strategic technical decisions.</td>
-                                <td class="position-seats">1</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<table class="position-table">
+<thead>
+<tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
+</thead>
+<tbody>
+<tr><td>5.1</td><td>Art Director</td><td>Guide visual direction and mentor artists.</td><td>1</td></tr>
+<tr><td>5.2</td><td>Animation Lead</td><td>Oversee animation quality and workflow.</td><td>1</td></tr>
+<tr><td>5.3</td><td>Project Manager / Producer</td><td>Coordinate schedules and team communication.</td><td>1</td></tr>
+<tr><td>5.4</td><td>Lead Developer</td><td>Guide technical direction across platforms.</td><td>1</td></tr>
+</tbody>
+</table>
 
-                    <h2 class="section-header">3. Application Procedures and Timeline</h2>
-                    <p class="no-indent">Interested candidates should submit applications through the studio's online portal at mloopstudio.github.io/join.html. Required materials include portfolio documentation demonstrating relevant technical competencies and professional experience history. The recruitment team commits to response communication within seven business days of application receipt.</p>
-                    <p>Applications are processed on a rolling admissions basis throughout the 2025 calendar year. Priority consideration will be given to 2D Animation Series department applications due to immediate production capacity requirements.</p>
+<h2 class="section-header">3. How to Apply</h2>
+<p class="no-indent">Applications are reviewed on a rolling basis via our website application form. Please include relevant work samples or portfolios. Whether we move forward or not, you'll get an email reply within <strong>7 days maximum.</strong> No ghosting, we promise!</p>
 
-                    <h2 class="section-header">4. Compensation and Working Arrangements</h2>
-                    <p class="no-indent">All positions operate within a fully remote framework supporting global participation. Compensation structures utilize milestone-based payment systems with flexible arrangements accommodating project-based or retainer contract preferences. Payment processing supports international transfer methods including PayPal and Wise platforms.</p>
-                    <p>The studio maintains software-agnostic production pipelines, allowing creative staff to utilize preferred industry-standard tools. Primary deliverables consist of PNG sequence exports ensuring cross-platform compatibility and production flexibility.</p>
-                </div>
+<h2 class="section-header">4. Working Together</h2>
+<p class="no-indent">All roles are remote and open internationally. Our team uses Discord for quick chats, Google Drive for file sharing, and clear project guidelines.
+ All team members are hired as Independent Contractors (freelancers). We primarily use PayPal or Wise. Mloop Studio covers the sender’s transaction fees; the contractor is responsible for their local bank fees. Payments are processed within 7–10 business days of receiving a valid invoice.
+</p>
+</div>
 
-                <!-- References -->
-                <div class="references">
-                    <h2>Contact Information</h2>
-                    <p><strong>Mloop Studio Human Resources</strong><br>
-                    Email: mloopstudio@gmail.com<br>
-                    Web: mloopstudio.github.io<br>
-                    Application Portal: mloopstudio.github.io/join.html</p>
-                </div>
+<div class="paper-footer">
+    <p>Last edited: December 17, 2025</p>
+    <a href="join.html" class="apply-button">SUBMIT APPLICATION</a>
+</div>
 
-                <!-- Footer -->
-                <div class="paper-footer">
-                    <p><strong>Document Revision:</strong> Version 1.0 | <strong>Publication Date:</strong> December 2025</p>
-                    <p>This document represents current employment opportunities and may be updated periodically to reflect organizational needs.</p>
-                    <a href="join.html" class="apply-button">SUBMIT APPLICATION</a>
-                </div>
-            </div>
-        </section>
-    </main>
+</div>
+</section>
+</main>
 
-    <footer>
+<footer>
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -703,6 +326,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
