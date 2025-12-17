@@ -101,6 +101,11 @@
             cursor: pointer;
         }
 
+        select:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .btn-submit {
             width: 100%;
             padding: 1rem 2rem;
@@ -213,11 +218,11 @@
             <div class="form-container">
                 <div class="form-intro">
                     <h2>Application Form</h2>
-                    <p>Tell us about yourself and your creative journey</p>
+                    <p>Tell us about yourself</p>
                 </div>
 
                 <div class="info-box">
-                    <p>💡 We're a remote studio creating meaningful children's entertainment. We value passion, purpose, and the desire to make a positive impact through animation.</p>
+                    <p>💡 We're committed to reviewing every application. Whether we move forward or not, you'll get an email reply within <strong><u>7 days maximum</u></strong>. No ghosting, we promise!</p>
                 </div>
 
                 <form id="hiringForm">
@@ -232,17 +237,21 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="department">Department <span class="required">*</span></label>
+                        <select id="department" name="department" required onchange="updatePositions()">
+                            <option value="">-- Select Department --</option>
+                            <option value="animation">2D Animation Series (HIGHLY NEEDED)</option>
+                            <option value="gamedev">2D Game Dev & Learning Resources</option>
+                            <option value="webdev">Web Development & Digital Infrastructure</option>
+                            <option value="audio_marketing">Audio, Marketing & Post-Production</option>
+                            <option value="leadership">Leadership & Management</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="position">Position Applying For <span class="required">*</span></label>
-                        <select id="position" name="position" required>
-                            <option value="">-- Select Position --</option>
-                            <option value="2D Animator">2D Animator</option>
-                            <option value="Character Designer">Character Designer</option>
-                            <option value="Background Artist">Background Artist</option>
-                            <option value="Storyboard Artist">Storyboard Artist</option>
-                            <option value="Game Designer">Game Designer</option>
-                            <option value="Illustrator">Illustrator</option>
-                            <option value="Motion Graphics Artist">Motion Graphics Artist</option>
-                            <option value="Other">Other</option>
+                        <select id="position" name="position" required disabled>
+                            <option value="">-- Select Department First --</option>
                         </select>
                     </div>
 
@@ -260,6 +269,11 @@
                     <div class="form-group">
                         <label for="portfolio">Portfolio Link <span class="required">*</span></label>
                         <input type="url" id="portfolio" name="portfolio" placeholder="https://..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="discord">Discord Username (Optional)</label>
+                        <input type="text" id="discord" name="discord" placeholder="We'll reach out here first if provided">
                     </div>
 
                     <div class="form-group">
@@ -324,6 +338,71 @@
         // Initialize EmailJS
         emailjs.init(EMAILJS_PUBLIC_KEY);
 
+        // Position Mapping Data
+        const positionData = {
+            "animation": [
+                "Key Pose Animator (Hand-Drawn)",
+                "Inbetweener (Hand-Drawn)",
+                "Clean-up & Color Artist",
+                "Storyboard Artist",
+                "Character Designer",
+                "Concept Artist",
+                "Background Artist",
+                "Open to Any Role (We'll assess best fit)"
+            ],
+            "gamedev": [
+                "2D Rigging Artist",
+                "Game Developer (Godot)",
+                "Character Designer",
+                "Concept Artist",
+                "Background Artist",
+                "UI/UX Designer (Kid-Centric)",
+                "Designer for Learning Resources"
+            ],
+            "webdev": [
+                "Frontend Developer (Web)",
+                "Backend Developer (Systems)",
+                "Fullstack Developer",
+                "UI/UX Designer (Web)"
+            ],
+            "audio_marketing": [
+                "Music Composer",
+                "Sound Designer (SFX)",
+                "Voice Actor/Actress",
+                "Video Editor",
+                "Compositing Artist",
+                "Social Media Manager",
+                "Content Marketer"
+            ],
+            "leadership": [
+                "Art Director",
+                "Animation Lead",
+                "Project Manager / Producer",
+                "Lead Developer"
+            ]
+        };
+
+        function updatePositions() {
+            const deptSelect = document.getElementById('department');
+            const posSelect = document.getElementById('position');
+            const selectedDept = deptSelect.value;
+
+            posSelect.innerHTML = '<option value="">-- Select Position --</option>';
+            
+            if (selectedDept && positionData[selectedDept]) {
+                posSelect.disabled = false;
+                positionData[selectedDept].forEach(pos => {
+                    const opt = document.createElement('option');
+                    opt.value = pos;
+                    opt.textContent = pos;
+                    posSelect.appendChild(opt);
+                });
+            } else {
+                posSelect.disabled = true;
+                posSelect.innerHTML = '<option value="">-- Select Department First --</option>';
+            }
+        }
+
         const form = document.getElementById('hiringForm');
         const submitBtn = document.getElementById('submitBtn');
         const statusMessage = document.getElementById('statusMessage');
@@ -339,9 +418,11 @@
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
+                department: document.getElementById('department').options[document.getElementById('department').selectedIndex].text,
                 position: document.getElementById('position').value,
                 experience: document.getElementById('experience').value,
                 portfolio: document.getElementById('portfolio').value,
+                discord: document.getElementById('discord').value || 'Not provided',
                 message: document.getElementById('message').value || 'No message provided'
             };
 
@@ -351,6 +432,7 @@
                 
                 showMessage('✅ Application submitted successfully! We\'ll be in touch soon.', 'success');
                 form.reset();
+                updatePositions(); // Reset position dropdown
             } catch (error) {
                 console.error('Error:', error);
                 showMessage('❌ Failed to send application. Please try again or email us directly at mloopstudio@gmail.com', 'error');
