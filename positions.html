@@ -12,141 +12,219 @@
             padding: 4rem 20px;
             text-align: center;
         }
+        
         .positions-hero h1 {
             font-family: var(--font-accent);
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
         }
+        
         .positions-hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             opacity: 0.95;
             max-width: 700px;
             margin: 0 auto;
         }
-        .why-join-section {
-            padding: 4rem 20px;
-            background-color: var(--bg-white);
-        }
-        .why-join-section h2 {
-            font-family: var(--font-accent);
-            font-size: 2.5rem;
-            text-align: center;
-            color: var(--fg-dark);
-            margin-bottom: 3rem;
-        }
-        .perks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-        }
-        .perk-card {
-            background-color: var(--bg-white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--accent);
-        }
-        .perk-card h3 {
-            color: var(--dominant);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .perk-card p {
-            line-height: 1.7;
-            color: var(--fg-dark);
-        }
+        
         .paper-section {
-            padding: 4rem 20px;
+            padding: 2rem 20px;
             background-color: #f5f5f5;
         }
+        
         .paper-container {
             max-width: 850px;
             margin: 0 auto;
             background-color: #ffffff;
-            padding: 4rem 5rem;
+            padding: 2rem 1.5rem;
             box-shadow: 0 0 30px rgba(0,0,0,0.1);
             font-family: Georgia, serif;
             line-height: 1.8;
             color: #000;
         }
+        
         .paper-header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid #000;
         }
+        
         .paper-header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-bottom: 1rem;
         }
+        
         .paper-authors {
             font-style: italic;
             margin-bottom: 0.5rem;
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
+        
         .paper-date {
-            font-size: 0.85rem;
+            font-size: clamp(0.75rem, 1.5vw, 0.85rem);
         }
+        
         .section-header {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 2.5rem 0 1.2rem;
-        }
-        .subsection-header {
-            font-size: 1.05rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: bold;
             margin: 2rem 0 1rem;
+        }
+        
+        .subsection-header {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            font-weight: bold;
+            margin: 1.5rem 0 0.8rem;
             font-style: italic;
         }
+        
         .paper-body p {
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
             text-align: justify;
             margin-bottom: 1rem;
             text-indent: 2em;
         }
+        
         .paper-body p.no-indent {
             text-indent: 0;
         }
+        
+        /* Mobile-friendly table wrapper */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        
         .position-table {
             width: 100%;
-            margin: 1.5rem 0;
+            min-width: 500px;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 1.5vw, 0.9rem);
         }
+        
         .position-table thead {
             background-color: #f0f0f0;
             border-top: 2px solid #000;
             border-bottom: 2px solid #000;
         }
+        
         .position-table th,
         .position-table td {
-            padding: 0.8rem;
+            padding: 0.6rem 0.5rem;
             text-align: left;
             vertical-align: top;
         }
+        
+        .position-table th:first-child,
+        .position-table td:first-child {
+            width: 50px;
+        }
+        
+        .position-table th:nth-child(2),
+        .position-table td:nth-child(2) {
+            width: 25%;
+            min-width: 120px;
+        }
+        
+        .position-table th:nth-child(3),
+        .position-table td:nth-child(3) {
+            width: 55%;
+        }
+        
+        .position-table th:last-child,
+        .position-table td:last-child {
+            width: 70px;
+            text-align: center;
+        }
+        
         .position-table tbody tr:last-child td {
             border-bottom: 2px solid #000;
         }
-        .references {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #000;
-        }
+        
         .paper-footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 2px solid #000;
             text-align: center;
         }
+        
+        .paper-footer p {
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            margin-bottom: 1rem;
+        }
+        
         .apply-button {
             display: inline-block;
-            padding: 0.8rem 2.5rem;
+            padding: 0.8rem 2rem;
             background-color: #000;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
+            transition: background-color 0.3s ease;
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+        }
+        
+        .apply-button:hover {
+            background-color: #333;
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 600px) and (max-width: 900px) {
+            .paper-container {
+                padding: 3rem 2.5rem;
+            }
+        }
+        
+        /* Desktop adjustments */
+        @media (min-width: 900px) {
+            .paper-section {
+                padding: 4rem 20px;
+            }
+            
+            .paper-container {
+                padding: 4rem 5rem;
+            }
+        }
+        
+        /* Mobile specific adjustments */
+        @media (max-width: 600px) {
+            .paper-body p {
+                text-align: left;
+                text-indent: 0;
+            }
+            
+            .table-wrapper {
+                margin: 1rem -1.5rem;
+                padding: 0 1.5rem;
+            }
+            
+            .position-table {
+                font-size: 0.8rem;
+            }
+            
+            .position-table th,
+            .position-table td {
+                padding: 0.5rem 0.3rem;
+            }
+            
+            .apply-button {
+                width: 100%;
+                max-width: 300px;
+                padding: 1rem;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 400px) {
+            .paper-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .position-table {
+                min-width: 450px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -182,7 +260,7 @@
 
 <div class="paper-body">
 <h2 class="section-header">1. Who We Are</h2>
-<p class="no-indent">Mloop Studio is an independent animation studio dedicated to creating thoughtful, emotionally meaningful children’s entertainment. Through hand-drawn 2D animation and interactive educational media, we aim to support curiosity, creativity, and self-awareness in young audiences.</p>
+<p class="no-indent">Mloop Studio is an independent animation studio dedicated to creating thoughtful, emotionally meaningful children's entertainment. Through hand-drawn 2D animation and interactive educational media, we aim to support curiosity, creativity, and self-awareness in young audiences.</p>
 <p>Our team works remotely across different time zones, connected by a shared purpose rather than a shared location. We value kindness, clear communication, and collaboration rooted in trust.</p>
 
 <h2 class="section-header">2. Departments & Open Roles</h2>
@@ -190,6 +268,7 @@
 <h3 class="subsection-header">2.1 2D Animation Series Production</h3>
 <p class="no-indent">This team brings our stories to life through traditional hand-drawn animation, focusing on expressive performance and visual clarity.</p>
 
+<div class="table-wrapper">
 <table class="position-table">
 <thead>
 <tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
@@ -205,17 +284,19 @@
 <tr><td>1.8</td><td>Open to Any Role</td><td>Role assigned based on portfolio and production needs.</td><td>Open</td></tr>
 </tbody>
 </table>
+</div>
 
 <h3 class="subsection-header">2.2 Game Development & Educational Resources</h3>
 <p class="no-indent">This team builds interactive learning experiences that encourage play, exploration, and understanding.</p>
 
+<div class="table-wrapper">
 <table class="position-table">
 <thead>
 <tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
 </thead>
 <tbody>
 <tr><td>2.1</td><td>2D Rigging Artist</td><td>Create rigs for game assets.</td><td>2</td></tr>
-<tr><td>2.2</td><td>Game Developer </td><td>Developing game through preferably godot software.</td><td>3</td></tr>
+<tr><td>2.2</td><td>Game Developer</td><td>Developing game through preferably godot software.</td><td>3</td></tr>
 <tr><td>2.3</td><td>Character Designer</td><td>Design characters suited for rigged animation.</td><td>2</td></tr>
 <tr><td>2.4</td><td>Concept Artist</td><td>Visualize game worlds and interactive elements.</td><td>1</td></tr>
 <tr><td>2.5</td><td>Background Artist</td><td>Create layered environments for interactive scenes.</td><td>2</td></tr>
@@ -223,9 +304,11 @@
 <tr><td>2.7</td><td>Educational Resource Graphic Designer</td><td>Create printable and digital learning materials.</td><td>1</td></tr>
 </tbody>
 </table>
+</div>
 
 <h3 class="subsection-header">2.3 Web Development & Digital Infrastructure</h3>
 
+<div class="table-wrapper">
 <table class="position-table">
 <thead>
 <tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
@@ -237,9 +320,12 @@
 <tr><td>3.4</td><td>UI/UX Designer (web)</td><td>Design intuitive web experiences for our landing page and employees portal.</td><td>1</td></tr>
 </tbody>
 </table>
+</div>
 
-<h3 class="subsection-header">2.4 Audio, Marketing & Post-Production (For both animation & game departments)</h3>
+<h3 class="subsection-header">2.4 Audio, Marketing & Post-Production</h3>
+<p class="no-indent">For both animation & game departments</p>
 
+<div class="table-wrapper">
 <table class="position-table">
 <thead>
 <tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
@@ -254,9 +340,12 @@
 <tr><td>4.7</td><td>Content Marketer</td><td>Create written promotional content.</td><td>1</td></tr>
 </tbody>
 </table>
+</div>
 
-<h3 class="subsection-header">2.5 Leadership & Project Management (For both animation & game departments)</h3>
+<h3 class="subsection-header">2.5 Leadership & Project Management</h3>
+<p class="no-indent">For both animation & game departments</p>
 
+<div class="table-wrapper">
 <table class="position-table">
 <thead>
 <tr><th>No.</th><th>Position</th><th>Responsibilities</th><th>Seats</th></tr>
@@ -268,14 +357,13 @@
 <tr><td>5.4</td><td>Lead Developer</td><td>Guide technical direction across platforms.</td><td>1</td></tr>
 </tbody>
 </table>
+</div>
 
 <h2 class="section-header">3. How to Apply</h2>
 <p class="no-indent">Applications are reviewed on a rolling basis via our website application form. Please include relevant work samples or portfolios. Whether we move forward or not, you'll get an email reply within <strong>7 days maximum.</strong> No ghosting, we promise!</p>
 
 <h2 class="section-header">4. Working Together</h2>
-<p class="no-indent">All roles are remote and open internationally. Our team uses Discord for quick chats, Google Drive for file sharing, and clear project guidelines.
- All team members are hired as Independent Contractors (freelancers). We primarily use PayPal or Wise. Mloop Studio covers the sender’s transaction fees; the contractor is responsible for their local bank fees. Payments are processed within 7–10 business days of receiving a valid invoice.
-</p>
+<p class="no-indent">All roles are remote and open internationally. Our team uses Discord for quick chats, Google Drive for file sharing, and clear project guidelines. All team members are hired as Independent Contractors (freelancers). We primarily use PayPal or Wise. Mloop Studio covers the sender's transaction fees; the contractor is responsible for their local bank fees. Payments are processed within 7–10 business days of receiving a valid invoice.</p>
 </div>
 
 <div class="paper-footer">
@@ -288,43 +376,43 @@
 </main>
 
 <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="images/logo-white.png" alt="Mloop Studio" class="footer-logo">
-                    <p>Creating meaningful children's entertainment through 2D animation.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="works.html">Our Works</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="join.html">Join Our Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/mloopstudio" target="_blank">Instagram</a>
-                        <a href="https://youtube.com/@mloopstudio" target="_blank">YouTube</a>
-                        <a href="https://mloopstudio.github.io" target="_blank">Website</a>
-                        <a href="mailto:mloopstudio@gmail.com">Gmail</a>
-                    </div>
-                </div>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="images/logo-white.png" alt="Mloop Studio" class="footer-logo">
+                <p>Creating meaningful children's entertainment through 2D animation.</p>
             </div>
-            <div class="footer-bottom">
-                <p>
-                    &copy; 2025 Mloop Studio. All rights reserved. | 
-                    <a href="privacy.html" class="privacy-link">Privacy Policy</a>
-                </p>
-                <p class="font-credit">
-                    Font: <a href="http://www.onlinewebfonts.com" target="_blank">Sifonn</a> 
-                    by OnlineWebFonts.com (CC BY 4.0)
-                </p>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="works.html">Our Works</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="join.html">Join Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://instagram.com/mloopstudio" target="_blank">Instagram</a>
+                    <a href="https://youtube.com/@mloopstudio" target="_blank">YouTube</a>
+                    <a href="https://mloopstudio.github.io" target="_blank">Website</a>
+                    <a href="mailto:mloopstudio@gmail.com">Gmail</a>
+                </div>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <p>
+                &copy; 2025 Mloop Studio. All rights reserved. | 
+                <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+            </p>
+            <p class="font-credit">
+                Font: <a href="http://www.onlinewebfonts.com" target="_blank">Sifonn</a> 
+                by OnlineWebFonts.com (CC BY 4.0)
+            </p>
+        </div>
+    </div>
+</footer>
 
 <script src="script.js"></script>
 </body>
